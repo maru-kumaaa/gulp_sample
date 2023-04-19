@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+// 変数の定義
+$breakpoint: (
+  "sm": "screen and (max-width: 600px)",
+  "md": "screen and (max-width: 768px)",
+  "lg": "screen and (max-width: 1024px)",
+) !default;
+
+// @mixinの定義
+@mixin break($select: md) {
+  @media #{map-get($breakpoint, $select)} {
+    @content;
+  }
+}
+
+// linehight
+@mixin lh_c($num: 16, $line: 24) {
+  line-height: calc($line / $num);
+}
+
+// letter-spacing
+@mixin ls($num: 0) {
+  letter-spacing: calc($num / 1000) + em;
+}
+

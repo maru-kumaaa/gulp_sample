@@ -1,0 +1,37 @@
+@charset "UTF-8";
+@use "../../common/css/base/mixin" as *;
+@use "../../common/css/base/functions" as *;
+
+// index styles
+
+.kv {
+ width: 100%;
+ height: 200px;
+ background: #ddd;
+ font-size: fz_c(14, 36, 375, 768);
+ //フォントサイズを自動で調整する。この場合はブラウザ幅が768px～375pxの間でフォントサイズが36px～14pxで自動で調整される
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ @include break(lg) {
+  // 1024pxからのメディアクエリ。
+  background: #ccc;
+ }
+ @include break {
+  // 768pxからのメディアクエリ。デフォルトがこの形。
+  background: #bbb;
+ }
+ @include break(sm) {
+  // 600pxからのメディクエリ。SP用。
+  background: #aaa;
+ }
+}
+.block1 {
+ width: 100%;
+ max-width: 1100px;
+ margin: 60px auto;
+ p {
+  font-size: var(--fz_lg);
+  //common/css/base/_variable.scssにフォントサイズを記載。--から始まるものはvar()で使い回せる。
+ }
+}

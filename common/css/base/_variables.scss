@@ -1,0 +1,41 @@
+@charset "UTF-8";
+@use "./mixin" as *;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;900&display=swap");
+
+:root {
+ // font family
+ --ff_main: "Noto Sans JP", "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", meiryo,
+  sans-serif;
+
+ // color
+ --color_dark: #000000;
+ --color_light: #ffffff;
+
+ // font size
+ --fz_xs: 12px;
+ --fz_sm: 14px;
+ --fz_md: 16px;
+ --fz_lg: 18px;
+
+ // line height
+ --lh_xs: 1.25;
+ --lh_sm: 1.5;
+ --lh_md: 1.75;
+ --lh_lg: 2;
+
+ // font weight
+ --fw_r: 400;
+ --fw_b: 900;
+
+ @include break(lg) {
+  --fz_xs: 10px;
+  --fz_sm: 12px;
+  --fz_md: 14px;
+  --fz_lg: 16px;
+  --fz_xl: 24px;
+  --lh_xs: 1.2;
+  --lh_sm: 1.4;
+  --lh_md: 1.6;
+  --lh_lg: 1.8;
+ }
+}

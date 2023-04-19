@@ -1,0 +1,302 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;900&display=swap");
+:root {
+ --ff_main: "Noto Sans JP", "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", meiryo,
+ sans-serif;
+ --color_dark: #000000;
+ --color_light: #ffffff;
+ --fz_xs: 12px;
+ --fz_sm: 14px;
+ --fz_md: 16px;
+ --fz_lg: 18px;
+ --lh_xs: 1.25;
+ --lh_sm: 1.5;
+ --lh_md: 1.75;
+ --lh_lg: 2;
+ --fw_r: 400;
+ --fw_b: 900;
+}
+@media screen and (max-width: 1024px) {
+ :root {
+  --fz_xs: 10px;
+  --fz_sm: 12px;
+  --fz_md: 14px;
+  --fz_lg: 16px;
+  --fz_xl: 24px;
+  --lh_xs: 1.2;
+  --lh_sm: 1.4;
+  --lh_md: 1.6;
+  --lh_lg: 1.8;
+ }
+}
+
+*,::before,::after {
+ border-width: 0;
+ border-style: solid;
+ -webkit-box-sizing: border-box;
+         box-sizing: border-box;
+}
+
+html {
+ line-height: 1.15;
+
+ -webkit-text-size-adjust: 100%;
+ -webkit-tap-highlight-color: transparent;
+}
+
+body {
+ margin: 0;
+}
+
+main {
+ display: block;
+}
+
+p,table,blockquote,address,pre,iframe,form,figure,dl {
+ margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+ margin: 0;
+ font-weight: inherit;
+ font-size: inherit;
+}
+
+ul,ol {
+ margin: 0;
+ padding: 0;
+ list-style: none;
+}
+
+dt {
+ font-weight: 700;
+}
+
+dd {
+ margin-left: 0;
+}
+
+hr {
+ clear: both;
+ height: 0;
+ overflow: visible;
+ margin: 0;
+ border-top-width: 1px;
+ color: inherit;
+ -webkit-box-sizing: content-box;
+         box-sizing: content-box;
+}
+
+pre {
+ font-family: monospace, monospace;
+ font-size: inherit;
+}
+
+address {
+ font-style: inherit;
+}
+
+a {
+ color: inherit;
+ background-color: transparent;
+ text-decoration: none;
+}
+
+abbr[title] {
+ -webkit-text-decoration: underline dotted;
+         text-decoration: underline dotted;
+}
+
+b,strong {
+ font-weight: bolder;
+}
+
+code,kbd,samp {
+ font-family: monospace, monospace;
+ font-size: inherit;
+}
+
+small {
+ font-size: 80%;
+}
+
+sub,sup {
+ position: relative;
+ line-height: 0;
+ vertical-align: baseline;
+ font-size: 75%;
+}
+
+sub {
+ bottom: -0.25em;
+}
+
+sup {
+ top: -0.5em;
+}
+
+svg,img,embed,object,iframe {
+ vertical-align: bottom;
+}
+
+button,input,optgroup,select,textarea {
+ vertical-align: middle;
+ margin: 0;
+ padding: 0;
+ border-radius: 0;
+ color: inherit;
+ background: transparent;
+ font: inherit;
+ text-align: inherit;
+ text-transform: inherit;
+
+ -webkit-appearance: none;
+ -moz-appearance: none;
+      appearance: none;
+}
+
+button,[type=button],[type=reset],[type=submit] {
+ cursor: pointer;
+}
+
+button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled {
+ cursor: default;
+}
+
+:-moz-focusring {
+ outline: auto;
+}
+
+select:disabled {
+ opacity: inherit;
+}
+
+option {
+ padding: 0;
+}
+
+fieldset {
+ min-width: 0;
+ margin: 0;
+ padding: 0;
+}
+
+legend {
+ padding: 0;
+}
+
+progress {
+ vertical-align: baseline;
+}
+
+textarea {
+ overflow: auto;
+}
+
+[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button {
+ height: auto;
+}
+
+[type=search] {
+ outline-offset: -2px;
+}
+
+[type=search]::-webkit-search-decoration {
+ -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+ font: inherit;
+
+ -webkit-appearance: button;
+}
+
+[type=number] {
+ -moz-appearance: textfield;
+ -webkit-appearance: textfield;
+         appearance: textfield;
+}
+
+label[for] {
+ cursor: pointer;
+}
+
+details {
+ display: block;
+}
+
+summary {
+ display: list-item;
+}
+
+[contenteditable]:focus {
+ outline: auto;
+}
+
+table {
+ border-color: inherit;
+ border-collapse: collapse;
+}
+
+caption {
+ text-align: left;
+}
+
+td,th {
+ vertical-align: top;
+ padding: 0;
+}
+
+th {
+ font-weight: 700;
+ text-align: left;
+}
+
+html {
+ width: 100%;
+ height: 100%;
+ font-family: var(--ff_main);
+ -webkit-box-sizing: border-box;
+         box-sizing: border-box;
+
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+ -webkit-tap-highlight-color: transparent;
+ -webkit-text-size-adjust: 100%;
+}
+
+body.is_spOverflow {
+ height: 100%;
+ overflow: hidden;
+}
+
+header {
+ display: -webkit-box;
+ display: -ms-flexbox;
+ display: flex;
+ width: 100%;
+ height: 100px;
+ -webkit-box-pack: center;
+     -ms-flex-pack: center;
+         justify-content: center;
+ -webkit-box-align: center;
+     -ms-flex-align: center;
+         align-items: center;
+ background: #aaaaaa;
+}
+
+footer {
+ display: -webkit-box;
+ display: -ms-flexbox;
+ display: flex;
+ width: 100%;
+ height: 100px;
+ -webkit-box-pack: center;
+     -ms-flex-pack: center;
+         justify-content: center;
+ -webkit-box-align: center;
+     -ms-flex-align: center;
+         align-items: center;
+ color: var(--color_light);
+ background: var(--color_dark);
+}
+/*# sourceMappingURL=common.css.map */

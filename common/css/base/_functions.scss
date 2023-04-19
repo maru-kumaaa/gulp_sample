@@ -1,0 +1,13 @@
+@charset "UTF-8";
+@use "sass:math";
+
+@function fz_c($minFontSize, $maxFontSize, $minViewport, $maxViewport) {
+  $fontSizeRate: $maxFontSize - $minFontSize;
+  $viewportRate: $maxViewport - $minViewport;
+  $changingSize: math.div(math.round(math.div($fontSizeRate, $viewportRate) * 10000), 100);
+  $fixedSize: math.div(math.round(($minFontSize - math.div($fontSizeRate, $viewportRate) * $minViewport) * 62.5), 1000);
+  $minRemFontSize: math.div(math.round($minFontSize * 62.5), 1000);
+  $maxRemFontSize: math.div(math.round($maxFontSize * 62.5), 1000);
+  @return clamp(#{$minRemFontSize}rem, #{$fixedSize}rem + #{$changingSize}vw, #{$maxRemFontSize}rem);
+}
+
