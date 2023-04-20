@@ -83,7 +83,6 @@ gulp.task("browser-reload", (done) => {
 });
 
 //画像圧縮
-
 gulp.task("imagemin", function () {
  return gulp
   .src(slice_img)

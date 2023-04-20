@@ -32,6 +32,6 @@
  margin: 60px auto;
  p {
   font-size: var(--fz_lg);
-  //common/css/base/_variable.scssにフォントサイズを記載。--から始まるものはvar()で使い回せる。
+  // カスタム変数でフォントサイズを設定する。common/css/base/_variable.scssにフォントサイズを記載。--から始まるものはvar()で使い回せる。
  }
 }
