@@ -30,6 +30,7 @@
    "$variable",
    "$import",
    "$extend",
+   "$include",
    "display",
    "position",
    "top",
@@ -316,7 +317,7 @@
    "widows",
    "-webkit-box-decoration-break",
    "box-decoration-break",
-   "$include"
+   "$include break"
   ]
  ]
 }
