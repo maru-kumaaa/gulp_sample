@@ -36,5 +36,6 @@
 }
 .block1 p {
  font-size: var(--fz_lg);
+ text-align: center;
 }
 /*# sourceMappingURL=layout.css.map */

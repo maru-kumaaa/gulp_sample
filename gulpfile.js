@@ -12,6 +12,7 @@ const imagemin = require("gulp-imagemin");
 const mozjpeg = require("imagemin-mozjpeg");
 const pngquant = require("imagemin-pngquant");
 const webp = require("gulp-webp");
+const del = require("del");
 // プラグイン
 
 const scss = [
@@ -21,7 +22,15 @@ const scss = [
 ];
 const base = "./common/**/*.scss";
 const all = ["./**/*.scss", "!./node_modules/**/*.scss"];
-const slice_img = "./slice_img/**/*.{svg,gif,png,jpg,jpeg}";
+// const slice_img = "./slice_img/**/*.{svg,gif,png,jpg,jpeg}";
+const slice_img = "./slice_img/**";
+const compressed = [
+	"./**/*.{svg,gif,png,jpg,jpeg}",
+	"!./slice_img/**/*.{svg,gif,png,jpg,jpeg}",
+	"!./node_modules/**/*.{svg,gif,png,jpg,jpeg}",
+	"!./**/mailformpro/*.{svg,gif,png,jpg,jpeg}",
+	"!./**/mfp.statics/*.{svg,gif,png,jpg,jpeg}",
+];
 
 // sassコンパイル
 gulp.task("sass", (done) => {
@@ -86,11 +95,19 @@ gulp.task("browser-reload", (done) => {
 	done();
 });
 
+//画像を削除
+gulp.task("delete", (done) => {
+	del(compressed);
+	console.log("DEBUG:削除");
+	done();
+});
+
 //画像圧縮
-gulp.task("imagemin", function () {
-	return gulp
+gulp.task("imgmin", (done) => {
+	// del(compressed);
+	// console.log("DEBUG:削除");
+	gulp
 		.src(slice_img)
-		.pipe(cached(imagemin))
 		.pipe(
 			imagemin([
 				pngquant({
@@ -108,6 +125,9 @@ gulp.task("imagemin", function () {
 			])
 		)
 		.pipe(gulp.dest("./"));
+	console.log(slice_img);
+	console.log("DEBUG:書き出し");
+	done();
 });
 
 //Webp
@@ -128,7 +148,8 @@ gulp.task("watch-files", (done) => {
 	gulp.watch(base, gulp.task("base"));
 	gulp.watch(scss, gulp.task("sass"));
 	gulp.watch("./**/*.css", gulp.task("browser-reload"));
-	gulp.watch("./slice_img/**", gulp.task("imagemin"));
+	gulp.watch("./slice_img/**/*.{svg,gif,png,jpg,jpeg}", gulp.task("delete"));
+	gulp.watch("./slice_img/**/*.{svg,gif,png,jpg,jpeg}", gulp.task("imgmin"));
 	gulp.watch("./**/img/**", gulp.task("browser-reload"));
 	gulp.watch("./*.html", gulp.task("browser-reload"));
 	gulp.watch("./**/*.html", gulp.task("browser-reload"));
