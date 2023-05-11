@@ -11,7 +11,6 @@ const csscomb = require("gulp-csscomb");
 const imagemin = require("gulp-imagemin");
 const mozjpeg = require("imagemin-mozjpeg");
 const pngquant = require("imagemin-pngquant");
-// const webp = require("gulp-webp");
 const del = require("del");
 const $ = require("gulp-load-plugins")({
 	pattern: ["del"], // del パッケージを読み込む
@@ -28,11 +27,6 @@ const scss = [
 const base = "./common/**/*.scss";
 const all = ["./**/*.scss", "!./node_modules/**/*.scss"];
 const slice_img = "./slice_img/**/*.{svg,gif,png,jpg,jpeg}";
-// const slice_img = "./slice_img/**";
-// const slice_img = [
-// 	"./**/*.{svg,gif,png,jpg,jpeg}",
-// 	"!./node_modules/**/*.{svg,gif,png,jpg,jpeg}",
-// ];
 const compressed = [
 	"./**/*.{svg,gif,png,jpg,jpeg}",
 	"!./slice_img/**/*.{svg,gif,png,jpg,jpeg}",
@@ -104,13 +98,6 @@ gulp.task("browser-reload", (done) => {
 	done();
 });
 
-//画像を削除
-gulp.task("delete", (done) => {
-	del(compressed);
-	console.log("DEBUG:削除");
-	done();
-});
-
 //画像圧縮
 gulp.task("imgmin", (done) => {
 	gulp
@@ -133,41 +120,6 @@ gulp.task("imgmin", (done) => {
 			])
 		)
 		.pipe(gulp.dest("./"));
-	console.log("DEBUG:圧縮");
-	done();
-});
-
-gulp.task(
-	"compress-images",
-	gulp.series("delete", "imgmin", (done) => {
-		console.log("DEBUG:圧縮完了");
-		done();
-	})
-);
-
-//Webp
-// gulp.task("img-webp", function () {
-// 	return gulp
-// 		.src(slice_img)
-// 		.pipe(cached(webp))
-// 		.pipe(
-// 			webp({
-// 				quality: 80,
-// 			})
-// 		)
-// 		.pipe(gulp.dest("./"));
-// });
-
-gulp.task("d", (done) => {
-	console.log("DEBUG:削除");
-	done();
-});
-gulp.task("a", (done) => {
-	console.log("DEBUG:追加");
-	done();
-});
-gulp.task("c", (done) => {
-	console.log("DEBUG:リネーム");
 	done();
 });
 
@@ -188,17 +140,6 @@ gulp.task("watch-files", (done) => {
 	gulp.watch("./**/*.css", gulp.task("browser-reload"));
 	gulp.watch(slice_img, gulp.task("imgmin"));
 	gulp.watch(slice_img, { events: "unlink" }, gulp.task("watch_delete"));
-	// gulp.watch(slice_img, gulp.task("watch_delete"));
-	// gulp.watch(
-	// 	"./slice_img/**/*.{svg,gif,png,jpg,jpeg}",
-	// 	{ events: "add" },
-	// 	gulp.task("a")
-	// );
-	// gulp.watch(
-	// 	"./slice_img/**/*.{svg,gif,png,jpg,jpeg}",
-	// 	{ events: "change" },
-	// 	gulp.task("c")
-	// );
 	gulp.watch(compressed, gulp.task("browser-reload"));
 	gulp.watch("./*.html", gulp.task("browser-reload"));
 	gulp.watch("./**/*.html", gulp.task("browser-reload"));
