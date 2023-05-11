@@ -139,7 +139,7 @@ gulp.task("watch-files", (done) => {
 	gulp.watch(scss, gulp.task("sass"));
 	gulp.watch("./**/*.css", gulp.task("browser-reload"));
 	gulp.watch(slice_img, gulp.task("imgmin"));
-	gulp.watch(slice_img, { events: "unlink" }, gulp.task("watch_delete"));
+	gulp.watch(slice_img, gulp.task("watch_delete"));
 	gulp.watch(compressed, gulp.task("browser-reload"));
 	gulp.watch("./*.html", gulp.task("browser-reload"));
 	gulp.watch("./**/*.html", gulp.task("browser-reload"));
