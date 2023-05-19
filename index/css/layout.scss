@@ -8,7 +8,7 @@
 	width: 100%;
 	height: 200px;
 	background: #ddd;
-	font-size: fz_c(14, 36, 375, 768);
+	font-size: clp(14, 36, 375, 768);
 	//フォントサイズを自動で調整する。この場合はブラウザ幅が768px～375pxの間でフォントサイズが36px～14pxで自動で調整される
 	display: flex;
 	align-items: center;
