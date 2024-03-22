@@ -7,17 +7,14 @@ const sourcemaps = require("gulp-sourcemaps");
 const connectSSI = require("connect-ssi");
 const browserSync = require("browser-sync");
 const cached = require("gulp-cached");
-const csscomb = require("gulp-csscomb");
 const imagemin = require("gulp-imagemin");
 const mozjpeg = require("imagemin-mozjpeg");
 const pngquant = require("imagemin-pngquant");
-const del = require("del");
 const $ = require("gulp-load-plugins")({
-	pattern: ["del"], // del パッケージを読み込む
-	overridePattern: false, // デフォルトのパターン ('gulp-*', 'gulp.*', '@*/gulp{-,.}*') を残す
-	maintainScope: false, // スコープパッケージを階層化しない
+	pattern: ["del"],
+	overridePattern: false,
+	maintainScope: false,
 });
-// プラグイン
 
 const scss = [
 	"./**/*.scss",
@@ -48,7 +45,6 @@ gulp.task("sass", (done) => {
 			})
 		)
 		.on("error", sass.logError)
-		.pipe(csscomb())
 		.pipe(autoprefixer())
 		.pipe(sourcemaps.write("./"))
 		.pipe(gulp.dest("./"));
@@ -67,7 +63,6 @@ gulp.task("base", (done) => {
 			})
 		)
 		.on("error", sass.logError)
-		.pipe(csscomb())
 		.pipe(autoprefixer())
 		.pipe(sourcemaps.write("./"))
 		.pipe(gulp.dest("./"));
@@ -124,10 +119,8 @@ gulp.task("imgmin", (done) => {
 });
 
 gulp.task("watch_delete", () => {
-	// gulp-watch を使用し、src ディレクトリ配下の HTML ファイルを監視する
 	$.watch("./slice_img/**/*.{svg,gif,png,jpg,jpeg}", (file) => {
 		if (file.event === "unlink") {
-			// ファイルが削除された時は、src ディレクトリのパスを dist に置換し、出力先ファイルを削除する
 			return $.del(file.path.replace(/slice_img/, ""));
 		}
 	});
